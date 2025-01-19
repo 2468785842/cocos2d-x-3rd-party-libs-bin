@@ -15,7 +15,11 @@ add_library(${target_name} STATIC
   ${${target_name}_src}
 )
 
-target_include_directories(${target_name} PUBLIC .)
+install(DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/"
+    DESTINATION "include"
+    FILES_MATCHING PATTERN "*.h")
+
+target_include_directories(${target_name} PUBLIC $<INSTALL_INTERFACE:include>)
 
 if(MACOSX OR ANDROID OR WINDOWS)
   get_target_property(zlib_header ext_zlib INTERFACE_INCLUDE_DIRECTORIES)

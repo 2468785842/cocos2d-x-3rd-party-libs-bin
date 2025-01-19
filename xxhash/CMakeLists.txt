@@ -9,7 +9,11 @@ add_library(${target_name} STATIC
   xxhash.c
 )
 
-target_include_directories(${target_name} PUBLIC .)
+install(DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/"
+    DESTINATION "include"
+    FILES_MATCHING PATTERN "*.h")
+
+target_include_directories(${target_name} PUBLIC $<INSTALL_INTERFACE:include>)
 
 set_target_properties(${target_name}
     PROPERTIES

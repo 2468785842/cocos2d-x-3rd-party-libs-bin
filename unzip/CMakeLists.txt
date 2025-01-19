@@ -19,7 +19,10 @@ install(DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/"
     DESTINATION "include"
     FILES_MATCHING PATTERN "*.h")
 
-target_include_directories(${target_name} PUBLIC $<INSTALL_INTERFACE:include>)
+target_include_directories(${target_name} PUBLIC 
+    $<INSTALL_INTERFACE:include>
+    $<BUILD_INTERFACE:.>
+)
 
 if(MACOSX OR ANDROID OR WINDOWS)
   get_target_property(zlib_header ext_zlib INTERFACE_INCLUDE_DIRECTORIES)

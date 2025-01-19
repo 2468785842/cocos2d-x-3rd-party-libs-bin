@@ -17,11 +17,14 @@ add_library(${target_name} STATIC
   ${${target_name}_src}
 )
 
-install(DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/"
+install(DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/../"
     DESTINATION "include"
     FILES_MATCHING PATTERN "*.h")
 
-target_include_directories(${target_name} PUBLIC $<INSTALL_INTERFACE:include>)
+target_include_directories(${target_name} PUBLIC 
+    $<INSTALL_INTERFACE:include>
+    $<BUILD_INTERFACE:..>
+)
 
 set_target_properties(${target_name}
     PROPERTIES

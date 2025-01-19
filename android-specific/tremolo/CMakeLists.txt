@@ -27,7 +27,12 @@ add_library(${target_name} STATIC
 
 target_compile_definitions(${target_name} PRIVATE ONLY_C)
 
-target_include_directories(${target_name} PUBLIC .)
+install(DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/"
+    DESTINATION "include"
+    FILES_MATCHING PATTERN "*.h")
+
+target_include_directories(${target_name} PUBLIC $<INSTALL_INTERFACE:include>)
+
 set_target_properties(${target_name}
     PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"

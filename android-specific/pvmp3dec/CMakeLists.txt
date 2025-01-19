@@ -49,10 +49,12 @@ install(DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/src/"
     DESTINATION "include"
     FILES_MATCHING PATTERN "*.h")
 
-target_include_directories(${target_name}
+target_include_directories(${target_name} 
+    INTERFACE
+        $<INSTALL_INTERFACE:include>
     PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/src>
 )
 
 set_target_properties(${target_name}

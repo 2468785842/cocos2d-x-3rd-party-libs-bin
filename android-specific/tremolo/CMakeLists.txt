@@ -33,7 +33,7 @@ install(DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/"
 
 target_include_directories(${target_name} PUBLIC 
     $<INSTALL_INTERFACE:include>
-    $<BUILD_INTERFACE:.>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>
 )
 
 set_target_properties(${target_name}

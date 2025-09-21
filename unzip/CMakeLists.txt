@@ -16,14 +16,14 @@ add_library(${target_name} STATIC
 )
 
 install(DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/"
-    DESTINATION "include"
+    DESTINATION "include/unzip"
     FILES_MATCHING PATTERN "*.h")
 
 target_include_directories(${target_name} 
     INTERFACE
-        $<INSTALL_INTERFACE:include>
+        $<INSTALL_INTERFACE:include/unzip>
     PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/..>
 )
 
 if(MACOSX OR ANDROID OR WINDOWS)
